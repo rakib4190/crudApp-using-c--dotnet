@@ -1,0 +1,29 @@
+﻿@model CrudApp.Models.StudentViewModel
+@{
+    ViewData["Title"] = "Delete Student";
+}
+<h3>@ViewData["Title"]</h3>
+<hr />
+<form action="Delete" method="post">
+    <div class="mb-3">
+        <label class="form-label">Id</label>
+        <input type="text" class="form-control" asp-for="Id" readonly />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-control" asp-for="Name" readonly />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Department</label>
+        <input type="text" class="form-control" asp-for="Department" readonly />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" asp-for="Email" readonly />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Phone</label>
+        <input type="text" class="form-control" asp-for="Phone" readonly />
+    </div>
+    <button class="btn btn-lg btn-danger">Delete</button>
+</form>

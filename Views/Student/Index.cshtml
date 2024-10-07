@@ -1,0 +1,66 @@
+﻿@model List<CrudApp.Models.StudentViewModel>
+@{
+    ViewData["Title"] = "All Student";
+}
+<h3>@ViewData["Title"]</h3>
+<hr />
+<form>
+    <button class="btn btn-success mb-3" asp-controller="Student" asp-action="Create">Add Student</button>
+    <table class="table table-hover table-responsive" id="dtable">
+        <thead>
+            <tr class="table-active">
+                <th>Id</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Action</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @if(Model != null && Model.Any() )
+            {
+                @foreach(var student in Model)
+                {
+                    <tr>
+                        <td>@student.Id</td>
+                        <td>@student.Name</td>
+                        <td>@student.Department</td>
+                        <td>@student.Email</td>
+                        <td>@student.Phone</td>
+                        <td>
+                            <div class="btn-sm btn-group-sm">
+                                <a class="btn btn-primary" asp-controller="Student" asp-action="Edit" asp-route-id = "@student.Id">Edit</a>
+                                <a class="btn btn-danger" asp-controller="Student" asp-action="Delete" asp-route-id="@student.Id">Delete</a>
+                            </div>                  
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="6">
+                        <div>
+                            No record are found at this moment..
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/2.1.5/css/dataTables.dataTables.css" />
+<script src="https://cdn.datatables.net/2.1.5/js/dataTables.js"></script>
+<script type="text/javascript">
+    var js = jQuery.noConflict(true);
+    js(document).ready(function () {
+        js('#dtable').DataTable({
+        });
+    });
+
+</script>
+
